@@ -9,8 +9,8 @@
 #include "MazeSolver.h"
 #include "Rendering.h"
 
-const int HEIGHT = 8;
-const int WIDTH = 8;
+const int HEIGHT = 15;
+const int WIDTH = 15;
 const int TOTAL_CELLS = WIDTH * HEIGHT;
 const std::pair<int, int> ENTRENCE = std::make_pair(0, 0);
 const std::pair<int, int> EXIT = std::make_pair(WIDTH - 1, HEIGHT - 1);
@@ -161,7 +161,7 @@ void initializeMaze(std::vector<std::vector<Cell>>& maze, int color)
 	{
 		for (int j = 0; j < WIDTH; ++j)
 		{
-			maze[i][j] = { false, true, true, true, true };
+			maze[i][j] = { false, true, true, true, true, std::make_pair(0, 0) };
 		}
 	}
 	renderMaze(maze, color);
@@ -175,5 +175,7 @@ int main()
 	initializeMaze(maze, color);
 
 	bredthFirstSearch(maze, ENTRENCE, EXIT);
+	lastDraw(EXIT.first, EXIT.second);
+	std::cout << "SOLVED" << std::endl;
 }
 

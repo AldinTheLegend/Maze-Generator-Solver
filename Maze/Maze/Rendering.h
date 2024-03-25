@@ -3,3 +3,5 @@
 #include "MazeSolver.h"
 
 void draw(const std::vector<std::vector<Cell>>& maze, int currentX, int currentY, int color);
+
+void lastDraw(int endX, int endY);

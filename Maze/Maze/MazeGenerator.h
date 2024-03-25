@@ -8,4 +8,5 @@ struct Cell {
 	bool botWall;
 	bool rightWall;
 	bool leftWall;
+	std::pair<int, int> parent;
 };

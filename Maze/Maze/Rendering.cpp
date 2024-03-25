@@ -74,6 +74,13 @@ void rightDraw(const std::vector<std::vector<Cell>>& maze, HANDLE hConsole, int 
 	SetConsoleTextAttribute(hConsole, 7);
 }
 
+void lastDraw(int endX, int endY) {
+	int x = setX(endX);
+	int y = setY(endY + 3);
+	COORD pos = { x, y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
 void draw(const std::vector<std::vector<Cell>>& maze, int currentX, int currentY, int color)
 {
 	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -83,11 +90,11 @@ void draw(const std::vector<std::vector<Cell>>& maze, int currentX, int currentY
 	COORD pos = { X, Y };
 
 	SetConsoleCursorPosition(hConsole, pos);
-	std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
 	topDraw(maze, hConsole, currentX, currentY, color);
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
 	pos.Y += 1;
 	SetConsoleCursorPosition(hConsole, pos);
@@ -98,11 +105,11 @@ void draw(const std::vector<std::vector<Cell>>& maze, int currentX, int currentY
 	rightDraw(maze, hConsole, currentX, currentY, color);
 	SetConsoleTextAttribute(hConsole, color);
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(50));
+	std::this_thread::sleep_for(std::chrono::milliseconds(20));
 
 	pos.Y += 1;
 	SetConsoleCursorPosition(hConsole, pos);
 	botDraw(maze, hConsole, currentX, currentY, color);
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	std::this_thread::sleep_for(std::chrono::milliseconds(50));
 }
